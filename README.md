@@ -4,7 +4,7 @@ Selecting the end of a text file of a certain size.
 ● The -o ofile flag specifies the name of the output file (in this case, ofile). If
 if this parameter is omitted, output the result to console output.
 ● The flag -c num, where num is an integer, indicates that the file needs to extract the last num characters.
-● The-n num flag, where num is an integer, indicates that the file needs to extract the last num rows.
+● The -n num flag, where num is an integer, indicates that the file needs to extract the last num lines.
 Command line: tail [-c num|-n num] [-o ofile] file0 file1 file2 …
 If any of the file names are incorrect or specified at the same time
 the-c and-n flags should return an error. If none of these flags is specified, you should print the last 10 lines.
