@@ -10,7 +10,6 @@ import java.io.*
  * is used to launch the console application and flags are declared.
  */
 class TailMain {
-    private var lastLines = 10
 
     @Option(name = "-c", metaVar = "extractSymbols", required = false, usage = "extract some last symbols")
     private var c = -1
@@ -41,14 +40,14 @@ class TailMain {
             return
         }
         val tail =  when {
-            (c == -1 && n == -1) -> Tail(lastLines, 0)
+            (c == -1 && n == -1) -> Tail(Selection.LINES, 10)
             (c != -1 && n != -1) -> {
                 println("You can't enter the -n and -c flags at the same time. Choose one of them.")
                 parser.printUsage(System.out)
                 return
             }
-            n > 0 -> Tail(n, 0)
-            c > 0 -> Tail(0, c)
+            n > 0 -> Tail(Selection.LINES, n)
+            c > 0 -> Tail(Selection.SYMBOLS, c)
             else -> {
                 println("You entered something incorrectly, make the correct request.")
                 println("java -jar tail.jar [-c num|-n num] [-o ofile] inNames")
